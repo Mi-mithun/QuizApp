@@ -25,7 +25,6 @@ body{
     box-shadow: rgb(0, 0, 0) 0px 10px 30px;
     border-radius: 45px;
     opacity: 1 ;
-
 }
 
 .QuizFont .Qimg img{
@@ -289,4 +288,86 @@ body{
 }
 .Questions footer .next_button button:hover{
     background-color: tomato;
+}
+
+
+.resultbox.activeResult{
+    z-index: 5 ;
+    opacity: 1 ;
+    pointer-events: auto;
+
+}
+
+.resultbox{
+    height: 500px;
+    width: 300px;
+    border: none;
+    outline: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: rgb(0, 0, 0) 0px 10px 30px;
+    border-radius: 45px;
+    opacity: 0 ;
+    pointer-events: none;
+}
+
+.resultbox img{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.resultbox .complet{
+    text-align: center;
+    margin: 20px ;
+    font-size: 20px;
+    font-weight: 500;
+    color: rebeccapurple;
+}
+.resultbox .score span{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    font-size: 15px;
+    
+}
+.resultbox .score span p{
+    margin:0 10px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.733);
+    padding: 0 5px 3px 4px;
+    border-radius: 5px;
+    justify-content: center;
+}
+.resultbtn button{
+    align-items: center;
+    position: relative;
+    left: 4%;
+    margin-top: 50px;
+    padding:10px 35px;
+    background-color: gray;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+    margin-left: 10px;
+    cursor: pointer;
+    
+
+}
+
+.resultbtn .quitbtn:hover{
+    background-color: rebeccapurple;
+
+}
+.resultbtn .replaybtn:hover{
+    background-color: indianred;
 }

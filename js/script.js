@@ -26,14 +26,24 @@ Continue.onclick = ()=>{
 }
 
 
+
 const Next = document.querySelector(`.next_button button`);
+
+const resultbox = document.querySelector(`.resultbox`);
+const Quit = document.querySelector(`.resultbtn .quitbtn`);
+const Replay = document.querySelector(`.resultbtn .replaybtn`);
+
+
+
+
 
 
 let que_count = 0;
 let counter
 let timeValue = 15;
 let counterline
-let widthvalue = 0
+let widthvalue = 0;
+let userscore = 0;
 
 
 
@@ -50,9 +60,18 @@ Next.onclick = ()=>{
 
     }else{
         console.log(`You have complet your task🫰`)
+        showResult()
     }
 }
 
+
+Quit.onclick = ()=>{
+    window.location.reload();
+}
+
+Replay.onclick = ()=>{
+         window.location.reload()
+}
 
 
 
@@ -87,11 +106,16 @@ let wIcon = `<div class="cross icon" style="color:red"><i class="fas fa-times"><
 function optionselected(answer){
     clearInterval(counterline)
     clearInterval(counter)
+
 const Myoptions = document.querySelector(`.Myoptions`);
     let userans = answer.textContent;
     let correctans = questions[que_count].answer;
     let disoption = Myoptions.children.length;
+
+
     if (userans == correctans){
+        userscore += 1;
+
         answer.classList.add(`correct`);
         console.log(`Correct`)
         answer.insertAdjacentHTML(`beforeend` , cIcon)
@@ -116,6 +140,28 @@ const Myoptions = document.querySelector(`.Myoptions`);
 
     Next.style.display = `block`
 }
+
+function showResult(){
+    Rulesbox.classList.remove(`activerules`);
+    Questions.classList.remove(`activeQuiz`)
+    resultbox.classList.add(`activeResult`);
+
+const score = document.querySelector(`.score`)
+
+if(userscore > 3){
+    let scoretag = `<span> Congratulation🎉<br> You get <p>`+ userscore +`</p> Out Of <p>`+ questions.length +`</p></span>`
+    score.innerHTML = scoretag;
+} else if(userscore > 1){
+    let scoretag = `<span> Carry On <br> You get <p>`+ userscore +`</p> Out Of <p>`+ questions.length +`</p></span>`
+    score.innerHTML = scoretag;
+}else{
+    let sorry =  `<span> Ops😭. Replay and Try With Better Preparation then Present <br> You get <p>`+ userscore +`</p> Out Of <p>`+ questions.length +`</p></span>`
+    
+        score.innerHTML = sorry;
+}
+
+}
+
 
 
 function startTime(time){
